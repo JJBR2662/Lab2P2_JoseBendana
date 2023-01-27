@@ -7,50 +7,92 @@ public class Lab2P2_JoseBendaña {
 
     public static void main(String[] args) {
         Scanner menu = new Scanner(System.in);
+        Usuarios admin = new Usuarios("admin", 0, "admin", "admin1234");
         ArrayList<Usuarios> usuarios = new ArrayList();
         ArrayList cosas = new ArrayList();
-        int useractual = 0;
         int opcion;
+        int usuarioactual=0;
+        boolean actualidad=true;
         do{
             System.out.println("""
                                1- Registro de Inmueble/Solar
                                2- Manejo de Estados
-                               3- Log In/Sign Up
-                               4- Log out
-                               5- Salir""");
+                               3- Log In/Sign Up/Log out
+                               4- Salir""");
             opcion = menu.nextInt();
             switch(opcion){
                 case 1:
-                    if (useractual==0) {
+                    if (actualidad&&usuarioactual==0) {
                         
                     }
                     break;
                 case 2:
-                    if (useractual==0) {
+                    if (actualidad&&usuarioactual==0) {
                         
                     }
                     break;
                 case 3:
                     Scanner caso3 = new Scanner(System.in);
-                    System.out.println("""
-                                       1- Log in
-                                       2- Sign up""");
-                    int logsign = caso3.nextInt();
-                    switch(logsign){
-                        
+                    Scanner caso3orac = new Scanner(System.in);
+                    int cualcaso3;
+                    do{
+                        System.out.println("""
+                                           1- Log in
+                                           2- Sign up
+                                           3- Log out""");
+                        cualcaso3 = caso3.nextInt();
+                    }while(cualcaso3>0||cualcaso3<4);
+                    switch(cualcaso3){
+                        case 1:
+                            boolean usuariocorrecto = false;
+                            boolean clavecorrecta = false;
+                            int queuser = 0;
+                            if (actualidad) {
+                                System.out.println("Lo siento no se puede hacer eso");
+                            }else{
+                                System.out.print("Ingrese su nombre de usuario: ");
+                                String user = caso3orac.nextLine();
+                                for (Usuarios a : usuarios) {
+                                    if (user.equals(a.getUser())) {
+                                        usuariocorrecto = true;
+                                        queuser = usuarios.indexOf(a);
+                                    }
+                                }
+                                if (usuariocorrecto==false) {
+                                    System.out.println("Usuario incorrecto");
+                                }else{
+                                    System.out.println("Ingrese la clave");
+                                    String clave = caso3orac.nextLine();
+                                    if (usuarios.get(queuser).getClave().equals(clave)) {
+                                        System.out.println("Se ha iniciado sesion correctamente");
+                                        actualidad = true;
+                                        usuarioactual = queuser;
+                                    }
+                                }
+                            }
+                            break;
+                        case 2:
+                            if (actualidad) {
+                                System.out.println("Lo siento no se puede hacer eso");
+                            }
+                            break;
+                        case 3:
+                            if (actualidad==false) {
+                                 System.out.println("Lo siento no se puede hacer eso");
+                            }
+                            break;
                     }
-                    break;
-                case 4:
                     
                     break;
-                case 5:
+                
+                case 4:
                     System.out.println("Saliendooo............");
                     break;
                 default:
                     System.out.println("Opcion no valida, ingresela de nuevo");
                     break;
             }
-        }while(opcion!=5);
+        }while(opcion!=4);
         System.out.println("Se ha salido exitosamente :)");
     }
     
