@@ -45,7 +45,6 @@ public class Lab2P2_JoseBendaña {
                     switch(cualcaso3){
                         case 1:
                             boolean usuariocorrecto = false;
-                            boolean clavecorrecta = false;
                             int queuser = 0;
                             if (actualidad) {
                                 System.out.println("Lo siento no se puede hacer eso");
@@ -72,13 +71,30 @@ public class Lab2P2_JoseBendaña {
                             }
                             break;
                         case 2:
+                            Scanner enteros = new Scanner(System.in);
+                            Scanner nuevousuario = new Scanner(System.in);
                             if (actualidad) {
                                 System.out.println("Lo siento no se puede hacer eso");
+                            }else{
+                                System.out.print("Ingrese su nombre: ");
+                                String nombre = nuevousuario.nextLine();
+                                System.out.print("Ingrese su edad: ");
+                                int edad = enteros.nextInt();
+                                System.out.print("Ingrese su username: ");
+                                String user = nuevousuario.nextLine();
+                                System.out.print("Ingrese su clave: ");
+                                String clave = nuevousuario.nextLine();
+                                usuarios.add(new Usuarios(nombre, edad, user, clave));
+                                actualidad = true;
+                                usuarioactual = usuarios.size();
                             }
                             break;
                         case 3:
                             if (actualidad==false) {
                                  System.out.println("Lo siento no se puede hacer eso");
+                            }else{
+                                actualidad=false;
+                                System.out.println("Se ha cerrado sesion correctamente");
                             }
                             break;
                     }
