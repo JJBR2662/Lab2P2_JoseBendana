@@ -9,11 +9,14 @@ public class Lab2P2_JoseBendaña {
         Scanner menu = new Scanner(System.in);
         Usuarios admin = new Usuarios("admin", 0, "admin", "admin1234");
         ArrayList<Usuarios> usuarios = new ArrayList();
+        usuarios.add(admin);
         ArrayList cosas = new ArrayList();
         int opcion;
         int usuarioactual = 0;
         boolean actualidad = true;
         do {
+            System.out.println("usuarioactual: "+usuarioactual);
+            System.out.println("actividad: "+actualidad);
             System.out.println("""
                                1- Registro de Inmueble/Solar
                                2- Manejo de Estados
@@ -22,8 +25,21 @@ public class Lab2P2_JoseBendaña {
             opcion = menu.nextInt();
             switch (opcion) {
                 case 1:
+                    Scanner caso1 = new Scanner(System.in);
                     if (actualidad && usuarioactual == 0) {
-
+                        int registro ;
+                        do{
+                            System.out.println("""
+                                               1- Crear Casas/Edificios/Solares
+                                               2- Listar Casas/Edificios/Solares
+                                               3- Modificar Casas/Edificios/Solares
+                                               4- Borrar Casas/Edificios/Solares
+                                               5- Vender Casas/Edificios/Solares
+                                               """);
+                            System.out.print("Ingrese la opcion: ");
+                            registro = caso1.nextInt();
+                        }while((registro>5)||(registro<1));
+                        
                     }
                     break;
                 case 2:
@@ -69,7 +85,7 @@ public class Lab2P2_JoseBendaña {
                                            2- Sign up
                                            3- Log out""");
                         cualcaso3 = caso3.nextInt();
-                    } while (cualcaso3 > 0 || cualcaso3 < 4);
+                    } while (cualcaso3 < 0 || cualcaso3 > 4);
                     switch (cualcaso3) {
                         case 1:
                             boolean usuariocorrecto = false;
@@ -122,6 +138,7 @@ public class Lab2P2_JoseBendaña {
                                 System.out.println("Lo siento no se puede hacer eso");
                             } else {
                                 actualidad = false;
+                                usuarioactual=0;
                                 System.out.println("Se ha cerrado sesion correctamente");
                             }
                             break;
