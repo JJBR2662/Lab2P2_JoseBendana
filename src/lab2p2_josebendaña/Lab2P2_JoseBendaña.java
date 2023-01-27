@@ -21,7 +21,8 @@ public class Lab2P2_JoseBendaña {
                                1- Registro de Inmueble/Solar
                                2- Manejo de Estados
                                3- Log In/Sign Up/Log out
-                               4- Salir""");
+                               4- Comprar Casas/Edificios/Solares
+                               5- Salir""");
             opcion = menu.nextInt();
             switch (opcion) {
                 case 1:
@@ -34,7 +35,6 @@ public class Lab2P2_JoseBendaña {
                                                2- Listar Casas/Edificios/Solares
                                                3- Modificar Casas/Edificios/Solares
                                                4- Borrar Casas/Edificios/Solares
-                                               5- Vender Casas/Edificios/Solares
                                                """);
                             System.out.print("Ingrese la opcion: ");
                             registro = caso1.nextInt();
@@ -147,13 +147,108 @@ public class Lab2P2_JoseBendaña {
                     break;
 
                 case 4:
+                    Scanner caso4 = new Scanner(System.in);
+                    
+                    
+                    
+                    boolean sera = false;
+                    if ((usuarioactual!=0)&&(actualidad)) {
+                        int comp;
+                        do{
+                            System.out.println("""
+                                               1- Comprar casa
+                                               2- Comprar Edificio
+                                               3- Comprar solar
+                                               """);
+                            System.out.print("Ingrese que quiere comprar: ");
+                            comp = caso4.nextInt();
+                            if ((comp>3)||(comp<1)) {
+                                System.out.println("Opcion no valida, ingrese una buena");
+                            }
+                        }while((comp>3)||(comp<1));
+                        switch(comp){
+                            case 1:
+                                int quecasa;
+                                ArrayList<Integer> quecasas = new ArrayList();
+                                for (Object n : cosas) {
+                                    if (n instanceof Casas){
+                                        quecasas.add(cosas.indexOf(n));
+                                        System.out.println(cosas.indexOf(n)+"- "+n+"\n");
+                                    }
+                                }
+                                do{
+                                    System.out.print("Ingrese que casa quiere comprar: ");
+                                    quecasa = caso4.nextInt();
+                                    for (int i = 0; i < quecasas.size(); i++) {
+                                        if (quecasa==quecasas.get(i)) {
+                                            sera = true;
+                                        }
+                                    }
+                                    if (sera=false) {
+                                        System.out.println("Opcion no valida, ingrese una buena");
+                                    }
+                                }while(sera=false);
+                                ((Casas)(cosas.get(quecasa))).setOwner(usuarios.get(usuarioactual).getNombre());
+                                break;
+                            case 2:
+                                ArrayList<Integer> quebuild = new ArrayList();
+                                int queedi;
+                                for (Object j : cosas) {
+                                    if (j instanceof Edificios){
+                                        quebuild.add(cosas.indexOf(j));
+                                        System.out.println(cosas.indexOf(j)+"- "+j+"\n");
+                                    }
+                                }
+                                do{
+                                    System.out.print("Ingrese que edificio quiere comprar: ");
+                                    queedi = caso4.nextInt();
+                                    for (int i = 0; i < quebuild.size(); i++) {
+                                        if (queedi==quebuild.get(i)) {
+                                            sera = true;
+                                        }
+                                    }
+                                    if (sera=false) {
+                                        System.out.println("Opcion no valida, ingrese una buena");
+                                    }
+                                }while(sera=false);
+                                ((Edificios)(cosas.get(queedi))).setOwner(usuarios.get(usuarioactual).getNombre());
+                                break;
+                            case 3:
+                                ArrayList<Integer> quesolar = new ArrayList();
+                                int cualsol;
+                                for (Object h : cosas) {
+                                    if (h instanceof Solar){
+                                        quesolar.add(cosas.indexOf(h));
+                                        System.out.println(cosas.indexOf(h)+"- "+h+"\n");
+                                    }
+                                }
+                                do{
+                                  System.out.print("Ingrese que edificio quiere comprar: ");
+                                    cualsol = caso4.nextInt();
+                                    for (int i = 0; i < quesolar.size(); i++) {
+                                        if (cualsol==quesolar.get(i)) {
+                                            sera = true;
+                                        }
+                                    }
+                                    if (sera=false) {
+                                        System.out.println("Opcion no valida, ingrese una buena");
+                                    }  
+                                }while(sera=false);
+                                ((Solar)(cosas.get(cualsol))).setOwner(usuarios.get(usuarioactual).getNombre());
+                                break;
+                        }
+                    }
+                    break;
+                    
+                case 5:
                     System.out.println("Saliendooo............");
                     break;
+                    
                 default:
                     System.out.println("Opcion no valida, ingresela de nuevo");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
         System.out.println("Se ha salido exitosamente :)");
     }
 
