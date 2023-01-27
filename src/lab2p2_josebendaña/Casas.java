@@ -3,6 +3,7 @@ package lab2p2_josebendaña;
 import java.awt.Color;
 
 public class Casas {
+    private String owner;
     private int numcasa;
     private int numbloque;
     private Color color;
@@ -10,8 +11,10 @@ public class Casas {
     private int largo;
     private int numba;
     private int numcu;
+    private String estado;
 
-    public Casas(int numcasa, int numbloque, Color color, int ancho, int largo, int numba, int numcu) {
+    public Casas(String owner, int numcasa, int numbloque, Color color, int ancho, int largo, int numba, int numcu, String estado) {
+        this.owner = owner;
         this.numcasa = numcasa;
         this.numbloque = numbloque;
         this.color = color;
@@ -19,7 +22,25 @@ public class Casas {
         this.largo = largo;
         this.numba = numba;
         this.numcu = numcu;
+        this.estado = estado;
     }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
 
     public int getNumcasa() {
         return numcasa;
@@ -75,6 +96,11 @@ public class Casas {
 
     public void setNumcu(int numcu) {
         this.numcu = numcu;
+    }
+
+    @Override
+    public String toString() {
+        return "Casas{" + "owner=" + owner + ", numcasa=" + numcasa + ", numbloque=" + numbloque + ", color=" + color + ", ancho=" + ancho + ", largo=" + largo + ", numba=" + numba + ", numcu=" + numcu + ", estado=" + estado + '}';
     }
     
     
