@@ -39,7 +39,16 @@ public class Lab2P2_JoseBendaña {
                             System.out.print("Ingrese la opcion: ");
                             registro = caso1.nextInt();
                         }while((registro>5)||(registro<1));
-                        
+                        switch(registro){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                               break;
+                        }
                     }
                     break;
                 case 2:
@@ -148,9 +157,6 @@ public class Lab2P2_JoseBendaña {
 
                 case 4:
                     Scanner caso4 = new Scanner(System.in);
-                    
-                    
-                    
                     boolean sera = false;
                     if ((usuarioactual!=0)&&(actualidad)) {
                         int comp;
@@ -238,6 +244,7 @@ public class Lab2P2_JoseBendaña {
                                 break;
                         }
                     }
+                    System.out.println("Lo siento usted no puede entrar aqui");
                     break;
                     
                 case 5:
