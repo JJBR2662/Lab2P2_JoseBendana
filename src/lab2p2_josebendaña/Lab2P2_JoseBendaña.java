@@ -16,9 +16,8 @@ public class Lab2P2_JoseBendaña {
         int opcion;
         int usuarioactual = 0;
         boolean actualidad = true;
+        System.out.println("El programa empieza con el admin ya con la sesion iniciada");
         do {
-            System.out.println("usuarioactual: "+usuarioactual);
-            System.out.println("actividad: "+actualidad);
             System.out.println("""
                                1- Registro de Inmueble/Solar
                                2- Manejo de Estados
@@ -115,7 +114,7 @@ public class Lab2P2_JoseBendaña {
                                                        """);
                                     System.out.print("Ingrese que quiere modificar: ");
                                     mod = caso1.nextInt();
-                                }while((mod>3)||(mod<0));
+                                }while((mod>4)||(mod<0));
                                 switch(mod){
                                     case 1:
                                         mostrarcosas(cosas);
@@ -415,7 +414,6 @@ public class Lab2P2_JoseBendaña {
         int numcasa = casaint.nextInt();
         System.out.print("Ingrese el numero de bloque: ");
         int numblo = casaint.nextInt();
-        Color color = JColorChooser.showDialog(null, "Elija un color", Color.red);
         System.out.print("Ingrese el ancho de la casa: ");
         int numan = casaint.nextInt();
         System.out.print("Ingrese el largo de la casa: ");
@@ -426,7 +424,7 @@ public class Lab2P2_JoseBendaña {
         int numca = casaint.nextInt();
         System.out.print("Ingrese el estado: ");
         String estado = casaorac.nextLine();
-        cosas.add(new Casas(" ", numcasa, numblo, color, numan, numla, numba, numca, estado));
+        cosas.add(new Casas(" ", numcasa, numblo, JColorChooser.showDialog(null, "Elija un color", Color.red), numan, numla, numba, numca, estado));
         return cosas;
     }
     
