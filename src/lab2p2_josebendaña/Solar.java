@@ -1,11 +1,14 @@
 package lab2p2_josebendaña;
 
 public class Solar {
+    
+    private int area;
     private String owner;
     private int ancho;
     private int largo;
     private String estado;
 
+    
     public Solar(String owner, int ancho, int largo, String estado) {
         this.owner = owner;
         this.ancho = ancho;
@@ -13,6 +16,11 @@ public class Solar {
         this.estado = estado;
     }
 
+    public int getArea() {
+        return largo * ancho;
+    }
+
+    
     public String getOwner() {
         return owner;
     }
