@@ -1,7 +1,9 @@
 package lab2p2_josebendaña;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JColorChooser;
 
 public class Lab2P2_JoseBendaña {
 
@@ -41,12 +43,141 @@ public class Lab2P2_JoseBendaña {
                         }while((registro>5)||(registro<1));
                         switch(registro){
                             case 1:
+                                int crear;
+                                do{
+                                    System.out.println("""
+                                                       1- Casas
+                                                       2- Edificios
+                                                       3- Solares
+                                                       """);
+                                    System.out.print("Ingrese que quiere crear: ");
+                                    crear = caso1.nextInt();
+                                }while((crear>3)||(crear<0));
+                                switch(crear){
+                                    case 1:
+                                        cosas = crearcasa(cosas);
+                                        break;
+                                    case 2:
+                                        cosas = crearedi(cosas);
+                                        break;
+                                    case 3:
+                                        cosas = crearsol(cosas);
+                                        break;
+                                }
                                 break;
                             case 2:
+                                int listar;
+                                do{
+                                    System.out.println("""
+                                                       1- Casas
+                                                       2- Edificios
+                                                       3- Solares
+                                                       4- todos
+                                                       """);
+                                    System.out.print("Ingrese que quiere crear: ");
+                                    listar = caso1.nextInt();
+                                }while((listar>3)||(listar<0));
+                                switch(listar){
+                                    case 1:
+                                        for (Object n : cosas) {
+                                            if (n instanceof Casas) {
+                                                System.out.println(cosas.indexOf(n) + "- " + n + "\n");
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+                                        for (Object j : cosas) {
+                                            if (j instanceof Edificios) {
+                                                System.out.println(cosas.indexOf(j) + "- " + j + "\n");
+                                            }
+                                        }
+                                        break;
+                                    case 3:
+                                        for (Object h : cosas) {
+                                            if (h instanceof Solar) {
+                                                System.out.println(cosas.indexOf(h) + "- " + h + "\n");
+                                            }
+                                        }
+                                        break;
+                                    case 4:
+                                        System.out.println(cosas);
+                                        break;
+                                    
+                                }
                                 break;
                             case 3:
+                                int mod;
+                                do{
+                                    System.out.println("""
+                                                       1- Casas
+                                                       2- Edificios
+                                                       3- Solares
+                                                       """);
+                                    System.out.print("Ingrese que quiere modificar: ");
+                                    mod = caso1.nextInt();
+                                }while((mod>3)||(mod<0));
+                                switch(mod){
+                                    case 1:
+                                        mostrarcosas(cosas);
+                                        System.out.println("Ingrese que Casa quiere modificar: ");
+                                        int cualcasa = caso1.nextInt();
+                                        cosas.remove(cualcasa);
+                                        cosas = crearcasa(cosas);
+                                        break;
+                                    case 2:
+                                        break;
+                                    case 3:
+                                        break;
+                                    default:
+                                        System.out.println("Ingreso opcion valida, adios");
+                                        break;
+                            }
                                 break;
                             case 4:
+                                Scanner yanose = new Scanner(System.in);
+                                int borrar;
+                                do{
+                                    System.out.println("""
+                                                       1- Casas
+                                                       2- Edificios
+                                                       3- Solares
+                                                       """);
+                                    System.out.print("Ingrese que quiere borrar: ");
+                                    borrar = caso1.nextInt();
+                                }while((borrar>3)||(borrar<0));
+                                switch(borrar){
+                                case 1:
+                                        for (Object n : cosas) {
+                                            if (n instanceof Casas) {
+                                                System.out.println(cosas.indexOf(n) + "- " + n + "\n");
+                                            }
+                                        }
+                                        System.out.println("Ingrese cual quiere borrar: ");
+                                        int cualborrar = yanose.nextInt();
+                                        cosas.remove(cualborrar);
+                                        break;
+                                    case 2:
+                                        for (Object j : cosas) {
+                                            if (j instanceof Edificios) {
+                                                System.out.println(cosas.indexOf(j) + "- " + j + "\n");
+                                            }
+                                        }
+                                        System.out.println("Ingrese cual quiere borrar: ");
+                                        int cualborrar2 = yanose.nextInt();
+                                        cosas.remove(cualborrar2);
+                                        break;
+                                    case 3:
+                                        for (Object h : cosas) {
+                                            if (h instanceof Solar) {
+                                                System.out.println(cosas.indexOf(h) + "- " + h + "\n");
+                                            }
+                                        }
+                                        System.out.println("Ingrese cual quiere borrar: ");
+                                        int cualborrar3 = yanose.nextInt();
+                                        cosas.remove(cualborrar3);
+                                        break;
+                                    
+                                }
                                break;
                         }
                     }
@@ -229,7 +360,7 @@ public class Lab2P2_JoseBendaña {
                                     }
                                 }
                                 do{
-                                  System.out.print("Ingrese que edificio quiere comprar: ");
+                                  System.out.print("Ingrese que solar quiere comprar: ");
                                     cualsol = caso4.nextInt();
                                     for (int i = 0; i < quesolar.size(); i++) {
                                         if (cualsol==quesolar.get(i)) {
@@ -263,5 +394,55 @@ public class Lab2P2_JoseBendaña {
         for (Object f : cosas) {
             System.out.println(cosas.indexOf(f) + "- " + f + "\n");
         }
+    }
+    
+    public static ArrayList crearcasa(ArrayList cosas){
+        Scanner casaint = new Scanner(System.in);
+        Scanner casaorac = new Scanner(System.in);
+        System.out.print("Ingrese el numero de casa: ");
+        int numcasa = casaint.nextInt();
+        System.out.print("Ingrese el numero de bloque: ");
+        int numblo = casaint.nextInt();
+        Color color = JColorChooser.showDialog(null, "Elija un color", Color.red);
+        System.out.print("Ingrese el ancho de la casa: ");
+        int numan = casaint.nextInt();
+        System.out.print("Ingrese el largo de la casa: ");
+        int numla = casaint.nextInt();
+        System.out.print("Ingrese el numero de banios: ");
+        int numba = casaint.nextInt();
+        System.out.print("Ingrese el numero de cuartos: ");
+        int numca = casaint.nextInt();
+        System.out.print("Ingrese el estado: ");
+        String estado = casaorac.nextLine();
+        cosas.add(new Casas(" ", numcasa, numblo, color, numan, numla, numba, numca, estado));
+        return cosas;
+    }
+    
+    public static ArrayList crearedi (ArrayList cosas){
+        Scanner sc = new Scanner(System.in);
+        Scanner scorac = new Scanner(System.in);
+        System.out.print("Ingrese el numero de pisos: ");
+        int numpi = sc.nextInt();
+        System.out.print("Ingrese la cantidad de locales: ");
+        int cant = sc.nextInt();
+        System.out.print("Ingrese la direccion: ");
+        String direc = scorac.nextLine();
+        System.out.print("Ingrese el estado: ");
+        String estado = scorac.nextLine();
+        cosas.add(new Edificios(" ", numpi, cant, direc, estado));
+        return cosas;
+    }
+    
+    public static ArrayList crearsol (ArrayList cosas){
+        Scanner sc = new Scanner(System.in);
+        Scanner scorac = new Scanner(System.in);
+        System.out.print("Ingrese el ancho del solar: ");
+        int ancho = sc.nextInt();
+        System.out.print("Ingrese el largo del solar: ");
+        int largo = sc.nextInt();
+        System.out.print("Ingrese el estado: ");
+        String estado = scorac.nextLine();
+        cosas.add(new Solar(" ", ancho, largo, estado));
+        return cosas;
     }
 }
