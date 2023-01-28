@@ -123,10 +123,22 @@ public class Lab2P2_JoseBendaña {
                                         int cualcasa = caso1.nextInt();
                                         cosas.remove(cualcasa);
                                         cosas = crearcasa(cosas);
+                                        System.out.println("Se ha modificado perfectamente");
                                         break;
                                     case 2:
+                                        mostrarcosas(cosas);
+                                        System.out.println("Ingrese que edificio quiere modificar: ");
+                                        int cualedi = caso1.nextInt();
+                                        cosas.remove(cualedi);
+                                        cosas = crearcasa(cosas);
+                                        System.out.println("Se ha modificado perfectamente");
                                         break;
                                     case 3:
+                                        System.out.println("Ingrese que solar quiere modificar: ");
+                                        int cualsol = caso1.nextInt();
+                                        cosas.remove(cualsol);
+                                        cosas = crearcasa(cosas);
+                                        System.out.println("Se ha modificado perfectamente");
                                         break;
                                     default:
                                         System.out.println("Ingreso opcion valida, adios");
